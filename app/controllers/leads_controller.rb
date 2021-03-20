@@ -13,7 +13,7 @@ class LeadsController < ApplicationController
         mail.add_personalization(custom)
 
         # Our template ID to display the one we want & our API key connector
-        mail.template_id ='d-28033aca18914f9d875a7a233454197a'
+        mail.template_id ='d-da8152a40d524dbc94850916bd1a47c4'
         our_key = SendGrid::API.new(api_key: ENV['SENDGRID_API'])
 
         # Sends the info above to the API's website
