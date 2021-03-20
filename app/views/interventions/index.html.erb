@@ -1,7 +1,7 @@
 <html>
 
     <head>
-        <%#= javascript_include_tag "intervention" %>
+        <%= javascript_include_tag "intervention" %>
     </head>
     
 	
@@ -66,117 +66,46 @@
 
                             <!-- /SELECTION -->
                             <form action="/interventions" method="post" id="interventions-form">
-                                    <p style="font-size: 20px; color:black">Please select your customer id:</p>
+                                    <p style="font-size: 20px; color:black">Please select a customer id:</p>
 
-                                    <div class="fancy-form fancy-form-select">
-                                            <select required class="form-control select2" id="mySelectBuilding" name="buildType">
-                                                <option disabled selected value="">--- Select ---</option>
-                                                <option value="residential">Residential</option>
-                                                <option value="commercial">Commercial</option>
-                                                <option value="corporate">Corporate</option>
-                                                <option value="hybrid">Hybrid</option>
-                                            </select>					
-                                        <!--
-                                            .fancy-arrow
-                                            .fancy-arrow-double
-                                        -->
-                                        <i class="fancy-arrow-"></i>
-                                        <p></p>
-                                    </div>
-                                    <p style="font-size: 20px; color:black">Please select your building:</p>
+                                    <%= form_with(model: @Customer) do |f| %>
+                                      <%= f.select :customer_id, Customer.all.collect { |c| [c.company_name, c.id] }, include_blank: true %>
+                                    <% end %>
 
-                                    <div class="fancy-form fancy-form-select">
-                                            <select required class="form-control select2" id="mySelectBuilding" name="buildType">
-                                                <option disabled selected value="">--- Select ---</option>
-                                                <option value="residential">Residential</option>
-                                                <option value="commercial">Commercial</option>
-                                                <option value="corporate">Corporate</option>
-                                                <option value="hybrid">Hybrid</option>
-                                            </select>					
-                                        <!--
-                                            .fancy-arrow
-                                            .fancy-arrow-double
-                                        -->
-                                        <i class="fancy-arrow-"></i>
-                                        <p></p>
-                                    </div>
+                                    <p style="font-size: 20px; color:black">Please select a building:</p>
 
-                                    <p style="font-size: 20px; color:black">Please select your battery:</p>
+                                    <%= form_with(model: @Building) do |f| %>
+                                      <%= f.select :building_id, Building.all.collect { |b| [b.id, b.id] }, include_blank: true %>
+                                    <% end %>
 
-                                    <div class="fancy-form fancy-form-select">
-                                            <select required class="form-control select2" id="mySelectBuilding" name="buildType">
-                                                <option disabled selected value="">--- Select ---</option>
-                                                <option value="residential">Residential</option>
-                                                <option value="commercial">Commercial</option>
-                                                <option value="corporate">Corporate</option>
-                                                <option value="hybrid">Hybrid</option>
-                                            </select>					
-                                        <!--
-                                            .fancy-arrow
-                                            .fancy-arrow-double
-                                        -->
-                                        <i class="fancy-arrow-"></i>
-                                        <p></p>
-                                    </div>
+                                    <p style="font-size: 20px; color:black">Please select a battery:</p>
 
-                                    <p style="font-size: 20px; color:black">Please select your column:</p>
+                                    <%= form_with(model: @Battery) do |f| %>
+                                      <%= f.select :battery_id, Battery.all.collect { |b| [b.id, b.id] }, include_blank: true %>
+                                    <% end %>
 
-                                    <div class="fancy-form fancy-form-select">
-                                            <select required class="form-control select2" id="mySelectBuilding" name="buildType">
-                                                <option disabled selected value="">--- Select ---</option>
-                                                <option value="residential">Residential</option>
-                                                <option value="commercial">Commercial</option>
-                                                <option value="corporate">Corporate</option>
-                                                <option value="hybrid">Hybrid</option>
-                                            </select>					
-                                        <!--
-                                            .fancy-arrow
-                                            .fancy-arrow-double
-                                        -->
-                                        <i class="fancy-arrow-"></i>
-                                        <p></p>
-                                    </div>
+                                    <p style="font-size: 20px; color:black">Please select a column:</p>
 
-                                    <p style="font-size: 20px; color:black">Please select your elevator:</p>
+                                    <%= form_with(model: @Column) do |f| %>
+                                      <%= f.select :column_id, Column.all.collect { |c| [c.id, c.id] }, include_blank: true %>
+                                    <% end %>
 
-                                    <div class="fancy-form fancy-form-select">
-                                            <select required class="form-control select2" id="mySelectBuilding" name="buildType">
-                                                <option disabled selected value="">--- Select ---</option>
-                                                <option value="residential">Residential</option>
-                                                <option value="commercial">Commercial</option>
-                                                <option value="corporate">Corporate</option>
-                                                <option value="hybrid">Hybrid</option>
-                                            </select>					
-                                        <!--
-                                            .fancy-arrow
-                                            .fancy-arrow-double
-                                        -->
-                                        <i class="fancy-arrow-"></i>
-                                        <p></p>
-                                    </div>
+                                    <p style="font-size: 20px; color:black">Please select an elevator:</p>
+
+                                    <%= form_with(model: @Elevator) do |f| %>
+                                      <%= f.select :elevator_id, Elevator.all.collect { |e| [e.id, e.id] }, include_blank: true %>
+                                    <% end %>
 
                                     <p style="font-size: 20px; color:black">Please select an employee:</p>
 
-                                    <div class="fancy-form fancy-form-select">
-                                            <select required class="form-control select2" id="mySelectBuilding" name="buildType">
-                                                <option disabled selected value="">--- Select ---</option>
-                                                <option value="residential">Residential</option>
-                                                <option value="commercial">Commercial</option>
-                                                <option value="corporate">Corporate</option>
-                                                <option value="hybrid">Hybrid</option>
-                                            </select>					
-                                        <!--
-                                            .fancy-arrow
-                                            .fancy-arrow-double
-                                        -->
-                                        <i class="fancy-arrow-"></i>
-                                        <p></p>
-                                    </div>
+                                    <%= form_with(model: @Employee) do |f| %>
+                                      <%= f.select :employee_id, Employee.all.collect { |e| [e.id, e.id] }, include_blank: true %>
+                                    <% end %>
                                     
                                     <div class="row">
                                         <div class="col-md-12">
                                           <label for="contact:message">Description:</label>
-                                          <textarea required maxlength="5000" rows="8" class="form-control" name="leads[message]" id="contact:message"></textarea>
+                                          <textarea required maxlength="5000" rows="8" class="form-control" name="description" id="interventionDescription"></textarea>
                                         </div>
                                     </div>
                                 <!-- /SELECTION -->
