@@ -5,5 +5,5 @@ class Building < ApplicationRecord
    belongs_to :customer
    belongs_to :address
    has_many :batteries, dependent: :destroy
-    
+   has_many :interventions, dependent: :destroy
 end

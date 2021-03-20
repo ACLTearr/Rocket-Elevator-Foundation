@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :interventions
   devise_for :users
   
   resources :quotes
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   get "residential" => "pages#residential"
   get "commercial" => "pages#commercial"
   get "quotes" => "pages#quote"
+  get "interventions" => "pages#intervention"
 
   get "/index" => "pages#index"
 

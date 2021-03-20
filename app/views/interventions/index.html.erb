@@ -1,0 +1,199 @@
+<html>
+
+    <head>
+        <%#= javascript_include_tag "intervention" %>
+    </head>
+    
+	
+    <body class="smoothscroll enable-animation">
+        <!-- wrapper -->
+		<div id="wrapper">
+       
+            <!-- PAGE HEADER -->
+                <section class="page-header page-header-xlg parallax parallax-4" style = "background-image: url(<%= asset_path("Rocket_Elevator_Assets/Quote/AdobeStock_556688421.jpg") %>)">
+                    <div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>
+
+                    <div class="container">
+
+                        <div class="bold font-raleway wow fadeInUp animated">
+                            <h2 class="fs-55 fw-400 text-center">Request an Intervention</h2>
+                        </div>
+
+                    </div>
+                </section>
+            <!-- /PAGE HEADER -->
+
+            
+
+            <!-- BUTTON CALLOUT -->
+                <div class="callout alert alert-border mt-1 mb-1">
+
+                    <div class="row">
+
+                        <div class="col-md-7 col-sm-8"><!-- left text -->
+                            <h3><strong>Questions?</strong></h3> &nbsp; 
+                            <p class="font-lato fs-35">
+                                We are here to help you!
+                            </p>
+                        </div><!-- /left text -->
+                
+                        
+                        <div class="col-md-4 col-sm-4 text-right"><!-- right btn -->
+                            <a class="btn btn-outline-danger" href="index.html#contact">CONTACT US <i class="fa fa-angle-right"></i></a>
+                        </div><!-- /right btn -->
+
+                    </div>
+
+                </div>
+            <!-- /BUTTON CALLOUT -->
+
+
+            <!-- INTERVENTION FORM BEEGINS -->			
+                <!-- SECTION TITLE -->
+                    <section class="section-xs">
+                        <div class="container">
+
+                            <div class="heading-title heading-dotted text-center">
+                                <h2 style="font-family: Garamond, Times, serif;">Intervention Form</h2>
+                            </div>					
+                        </div>
+                    </section>
+                <!-- /SECTION TITLE -->
+                    
+                <!-- BOX SELECTION -->			
+                    <div class="card card-default">
+                        <div class="card-block">
+
+                            <!-- /SELECTION -->
+                            <form action="/interventions" method="post" id="interventions-form">
+                                    <p style="font-size: 20px; color:black">Please select your customer id:</p>
+
+                                    <div class="fancy-form fancy-form-select">
+                                            <select required class="form-control select2" id="mySelectBuilding" name="buildType">
+                                                <option disabled selected value="">--- Select ---</option>
+                                                <option value="residential">Residential</option>
+                                                <option value="commercial">Commercial</option>
+                                                <option value="corporate">Corporate</option>
+                                                <option value="hybrid">Hybrid</option>
+                                            </select>					
+                                        <!--
+                                            .fancy-arrow
+                                            .fancy-arrow-double
+                                        -->
+                                        <i class="fancy-arrow-"></i>
+                                        <p></p>
+                                    </div>
+                                    <p style="font-size: 20px; color:black">Please select your building:</p>
+
+                                    <div class="fancy-form fancy-form-select">
+                                            <select required class="form-control select2" id="mySelectBuilding" name="buildType">
+                                                <option disabled selected value="">--- Select ---</option>
+                                                <option value="residential">Residential</option>
+                                                <option value="commercial">Commercial</option>
+                                                <option value="corporate">Corporate</option>
+                                                <option value="hybrid">Hybrid</option>
+                                            </select>					
+                                        <!--
+                                            .fancy-arrow
+                                            .fancy-arrow-double
+                                        -->
+                                        <i class="fancy-arrow-"></i>
+                                        <p></p>
+                                    </div>
+
+                                    <p style="font-size: 20px; color:black">Please select your battery:</p>
+
+                                    <div class="fancy-form fancy-form-select">
+                                            <select required class="form-control select2" id="mySelectBuilding" name="buildType">
+                                                <option disabled selected value="">--- Select ---</option>
+                                                <option value="residential">Residential</option>
+                                                <option value="commercial">Commercial</option>
+                                                <option value="corporate">Corporate</option>
+                                                <option value="hybrid">Hybrid</option>
+                                            </select>					
+                                        <!--
+                                            .fancy-arrow
+                                            .fancy-arrow-double
+                                        -->
+                                        <i class="fancy-arrow-"></i>
+                                        <p></p>
+                                    </div>
+
+                                    <p style="font-size: 20px; color:black">Please select your column:</p>
+
+                                    <div class="fancy-form fancy-form-select">
+                                            <select required class="form-control select2" id="mySelectBuilding" name="buildType">
+                                                <option disabled selected value="">--- Select ---</option>
+                                                <option value="residential">Residential</option>
+                                                <option value="commercial">Commercial</option>
+                                                <option value="corporate">Corporate</option>
+                                                <option value="hybrid">Hybrid</option>
+                                            </select>					
+                                        <!--
+                                            .fancy-arrow
+                                            .fancy-arrow-double
+                                        -->
+                                        <i class="fancy-arrow-"></i>
+                                        <p></p>
+                                    </div>
+
+                                    <p style="font-size: 20px; color:black">Please select your elevator:</p>
+
+                                    <div class="fancy-form fancy-form-select">
+                                            <select required class="form-control select2" id="mySelectBuilding" name="buildType">
+                                                <option disabled selected value="">--- Select ---</option>
+                                                <option value="residential">Residential</option>
+                                                <option value="commercial">Commercial</option>
+                                                <option value="corporate">Corporate</option>
+                                                <option value="hybrid">Hybrid</option>
+                                            </select>					
+                                        <!--
+                                            .fancy-arrow
+                                            .fancy-arrow-double
+                                        -->
+                                        <i class="fancy-arrow-"></i>
+                                        <p></p>
+                                    </div>
+
+                                    <p style="font-size: 20px; color:black">Please select an employee:</p>
+
+                                    <div class="fancy-form fancy-form-select">
+                                            <select required class="form-control select2" id="mySelectBuilding" name="buildType">
+                                                <option disabled selected value="">--- Select ---</option>
+                                                <option value="residential">Residential</option>
+                                                <option value="commercial">Commercial</option>
+                                                <option value="corporate">Corporate</option>
+                                                <option value="hybrid">Hybrid</option>
+                                            </select>					
+                                        <!--
+                                            .fancy-arrow
+                                            .fancy-arrow-double
+                                        -->
+                                        <i class="fancy-arrow-"></i>
+                                        <p></p>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                          <label for="contact:message">Description:</label>
+                                          <textarea required maxlength="5000" rows="8" class="form-control" name="leads[message]" id="contact:message"></textarea>
+                                        </div>
+                                    </div>
+                                <!-- /SELECTION -->
+
+                                        <!--SUBMIT BUTTON -->
+                                            <button class="btn btn-outline-primary" type="submit">Submit Form<button>
+                                        <!--SUBMIT BUTTON -->
+                                    </div>
+                                <!-- /fieldsCoice -->
+                            </form>
+                        </div>
+                    </div>
+                <!-- /BOX SELECTION -->
+            <!-- /QUOTE FORM ENDS -->    
+        <div>
+        <!-- /wrapper -->
+     <!-- SCROLL TO TOP -->
+	 <a href="#" id="toTop"></a>
+    </body>
+</html>

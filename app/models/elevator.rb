@@ -1,5 +1,6 @@
 class Elevator < ApplicationRecord
     belongs_to :column
+    has_many :interventions, dependent: :destroy
     # before_save :twilio_txt
 
     # When an elevator changes its status to Intervention, a message is sent to the technician responsible for the building

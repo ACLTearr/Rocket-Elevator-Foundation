@@ -41,6 +41,11 @@
                         <li><!-- CONTACT -->
                             <%= link_to "CONTACT", "#{root_path}#contact", 'data-turbolinks': false%>
                         </li>
+                        <%# if current_user.customers? %>
+                        <li><!-- CONTACT -->
+                            <%= link_to "INTERVENTION", interventions_path, 'data-turbolinks': false%>
+                        </li>
+                        <%# end %>
                         <li class="dropdown"><!-- SERVICES -->
                             <a class="dropdown-toggle" href="#">
                                 MY ACCOUNT
