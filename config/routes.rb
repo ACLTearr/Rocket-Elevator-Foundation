@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   #get 'welcome' => 'watson#welcome'
 
   get '/watson/update' => 'watson#speak'
+
+  # /interventions is the action from the form in intervention.html.erb
+  post "/interventions" => "interventions#create"
   
   # /quotes is the action from the form in quote.html.erb
   post "/quotes" => "quotes#create"

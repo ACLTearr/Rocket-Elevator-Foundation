@@ -1,22 +1,22 @@
 class InterventionsController < ApplicationController
 
   # GET /interventions or /interventions.json
-  def index
-    @interventions = Intervention.all
-  end
+  # def index
+  #   @interventions = Intervention.all
+  # end
 
-  # GET /interventions/1 or /interventions/1.json
-  def show
-  end
+  # # GET /interventions/1 or /interventions/1.json
+  # def show
+  # end
 
-  # GET /interventions/new
-  def new
-    @intervention = Intervention.new
-  end
+  # # GET /interventions/new
+  # def new
+  #   @intervention = Intervention.new
+  # end
 
-  # GET /interventions/1/edit
-  def edit
-  end
+  # # GET /interventions/1/edit
+  # def edit
+  # end
 
   # POST /interventions or /interventions.json
   def create
@@ -33,36 +33,37 @@ class InterventionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /interventions/1 or /interventions/1.json
-  def update
-    respond_to do |format|
-      if @intervention.update(intervention_params)
-        format.html { redirect_to @intervention, notice: "Intervention was successfully updated." }
-        format.json { render :show, status: :ok, location: @intervention }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @intervention.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # # PATCH/PUT /interventions/1 or /interventions/1.json
+  # def update
+  #   respond_to do |format|
+  #     if @intervention.update(intervention_params)
+  #       format.html { redirect_to @intervention, notice: "Intervention was successfully updated." }
+  #       format.json { render :show, status: :ok, location: @intervention }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
+  #       format.json { render json: @intervention.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
-  # DELETE /interventions/1 or /interventions/1.json
-  def destroy
-    @intervention.destroy
-    respond_to do |format|
-      format.html { redirect_to interventions_url, notice: "Intervention was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
+  # # DELETE /interventions/1 or /interventions/1.json
+  # def destroy
+  #   @intervention.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to interventions_url, notice: "Intervention was successfully destroyed." }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_intervention
-      @intervention = Intervention.find(params[:id])
-    end
+  # private
+  #   # Use callbacks to share common setup or constraints between actions.
+  #   def set_intervention
+  #     @intervention = Intervention.find(params[:id])
+  #   end
 
     # Only allow a list of trusted parameters through.
     def intervention_params
-      params.fetch(:intervention, {})
+      params.required(:intervention).permit!
     end
 end
+# params.required(:leads).permit!

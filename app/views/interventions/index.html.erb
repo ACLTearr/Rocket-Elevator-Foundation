@@ -66,55 +66,27 @@
 
                             <!-- /SELECTION -->
                             <form action="/interventions" method="post" id="interventions-form">
-                                    <p style="font-size: 20px; color:black">Please select a customer id:</p>
 
-                                    <%= form_with(model: @Customer) do |f| %>
-                                      <%= f.select :customer_id, Customer.all.collect { |c| [c.company_name, c.id] }, include_blank: true %>
-                                    <% end %>
+                              <%= form_with model: @intervention, id: "intervention_form" do |f| %>
+                                <%= f.select :customer_id, Customer.all.collect { |customer| [customer.company_name + ", Customer Id:" + customer.id.to_s] }, prompt: "Select a customer" %><br>
+                                <%= f.select :building_id, Building.all.collect { |building| [building.full_name_of_the_technical_contact_for_the_building + ", Building Id:" + building.id.to_s] }, prompt: "Select a building" %><br>
+                                <%= f.select :battery_id, Battery.all.collect { |battery| [battery.id, battery.id] }, prompt: "Select a battery" %><br>
+                                <%= f.select :column_id, Column.all.collect { |column| [column.id, column.id] }, prompt: "Select a column" %><br>
+                                <%= f.select :elevator_id, Elevator.all.collect { |elevator| [elevator.id, elevator.id] }, prompt: "Select an elevator" %><br>
+                                <%= f.select :employee_id, Employee.all.collect { |employee| [employee.first_name + " " + employee.last_name, employee.id] }, prompt: "Select an employee" %>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <label for="interventionDescription">Description:</label>
+                                    <textarea maxlength="5000" rows="8" class="form-control" name="description" id="interventionDescription"></textarea>
+                                  </div>
+                                </div>
+                                <%= f.submit "Submit" %>
+                              <% end %>
+                              <!-- /SELECTION -->
 
-                                    <p style="font-size: 20px; color:black">Please select a building:</p>
-
-                                    <%= form_with(model: @Building) do |f| %>
-                                      <%= f.select :building_id, Building.all.collect { |b| [b.id, b.id] }, include_blank: true %>
-                                    <% end %>
-
-                                    <p style="font-size: 20px; color:black">Please select a battery:</p>
-
-                                    <%= form_with(model: @Battery) do |f| %>
-                                      <%= f.select :battery_id, Battery.all.collect { |b| [b.id, b.id] }, include_blank: true %>
-                                    <% end %>
-
-                                    <p style="font-size: 20px; color:black">Please select a column:</p>
-
-                                    <%= form_with(model: @Column) do |f| %>
-                                      <%= f.select :column_id, Column.all.collect { |c| [c.id, c.id] }, include_blank: true %>
-                                    <% end %>
-
-                                    <p style="font-size: 20px; color:black">Please select an elevator:</p>
-
-                                    <%= form_with(model: @Elevator) do |f| %>
-                                      <%= f.select :elevator_id, Elevator.all.collect { |e| [e.id, e.id] }, include_blank: true %>
-                                    <% end %>
-
-                                    <p style="font-size: 20px; color:black">Please select an employee:</p>
-
-                                    <%= form_with(model: @Employee) do |f| %>
-                                      <%= f.select :employee_id, Employee.all.collect { |e| [e.id, e.id] }, include_blank: true %>
-                                    <% end %>
-                                    
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                          <label for="contact:message">Description:</label>
-                                          <textarea required maxlength="5000" rows="8" class="form-control" name="description" id="interventionDescription"></textarea>
-                                        </div>
-                                    </div>
-                                <!-- /SELECTION -->
-
-                                        <!--SUBMIT BUTTON -->
-                                            <button class="btn btn-outline-primary" type="submit">Submit Form<button>
-                                        <!--SUBMIT BUTTON -->
-                                    </div>
-                                <!-- /fieldsCoice -->
+                              <!--SUBMIT BUTTON -->
+                                <!--<button class="btn btn-outline-primary" type="submit">Submit Form<button>-->
+                              <!--SUBMIT BUTTON -->
                             </form>
                         </div>
                     </div>
