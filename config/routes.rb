@@ -37,4 +37,7 @@ Rails.application.routes.draw do
   # /leads is the action from the form in index.html.erb
   post "/leads" => "leads#create"
 
+  # AJAX call route
+  get "/ajax/GetData" => "interventions#getData"
+
 end

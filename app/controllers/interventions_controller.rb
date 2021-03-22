@@ -1,69 +1,65 @@
 class InterventionsController < ApplicationController
 
-  # GET /interventions or /interventions.json
-  # def index
-  #   @interventions = Intervention.all
-  # end
+  def getData
+    id = request.query_parameters["id"]
+    field = request.query_parameters["value"]
 
-  # # GET /interventions/1 or /interventions/1.json
-  # def show
-  # end
+    @data = ""
 
-  # # GET /interventions/new
-  # def new
-  #   @intervention = Intervention.new
-  # end
+    if field == 'building'
+      @data = Building.where(customer: id)
+    elsif field == 'battery'
+      @data = Battery.where(building: id)
+    elsif field == 'column'
+      @data = Column.where(battery: id)
+    elsif field == 'elevator'
+      @data = Elevator.where(column: id)
+    else
+      @data = ""
+    end
 
-  # # GET /interventions/1/edit
-  # def edit
-  # end
+    return render json: @data
+
+  end
 
   # POST /interventions or /interventions.json
   def create
+
     @intervention = Intervention.new(intervention_params)
 
-    respond_to do |format|
-      if @intervention.save
-        format.html { redirect_to @intervention, notice: "Intervention was successfully created." }
-        format.json { render :show, status: :created, location: @intervention }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @intervention.errors, status: :unprocessable_entity }
+      @intervention.author = Employee.find_by(user_id: current_user.id).id
+      @intervention.customer_id = params["customer_id"]
+      @intervention.building_id = params["building_id"]
+      # @intervention.elevator_id = params["elevator_id"]
+      # @intervention.column_id = params["column_id"] unless params["elevator_id"]
+      # @intervention.battery_id = params["battery_id"] unless params["elevator_id"] == "" and params["column_id"] == ""
+
+
+      if params["elevator_id"]
+        @intervention.elevator_id = params["elevator_id"]
       end
+
+      if params["elevator_id"] == ""
+        @intervention.column_id = params["column_id"]
+      end
+
+      if params["elevator_id"] == "" and params["column_id"] == ""
+        @intervention.battery_id = params["battery_id"]
+      end
+
+      @intervention.employee_id = params["employee_id"]
+
+      @intervention.report = params["description"] unless params["description"] == ""
+
+      @intervention.status = "Pending" 
+
+    if @intervention.save
+      redirect_back fallback_location: root_path, notice: "Your Intervention was successfully created and sent!"
     end
   end
-
-  # # PATCH/PUT /interventions/1 or /interventions/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @intervention.update(intervention_params)
-  #       format.html { redirect_to @intervention, notice: "Intervention was successfully updated." }
-  #       format.json { render :show, status: :ok, location: @intervention }
-  #     else
-  #       format.html { render :edit, status: :unprocessable_entity }
-  #       format.json { render json: @intervention.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # # DELETE /interventions/1 or /interventions/1.json
-  # def destroy
-  #   @intervention.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to interventions_url, notice: "Intervention was successfully destroyed." }
-  #     format.json { head :no_content }
-  #   end
-  # end
-
-  # private
-  #   # Use callbacks to share common setup or constraints between actions.
-  #   def set_intervention
-  #     @intervention = Intervention.find(params[:id])
-  #   end
-
     # Only allow a list of trusted parameters through.
     def intervention_params
-      params.required(:intervention).permit!
+      params.fetch(:intervention, {})
+      # params.required(:interventions).permit!
     end
 end
-# params.required(:leads).permit!
