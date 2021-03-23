@@ -1,8 +1,8 @@
 class Elevator < ApplicationRecord
     belongs_to :column
     # has_many :interventions, dependent: :destroy
-    # before_save :twilio_txt
 
+    before_save :twilio_txt
     # When an elevator changes its status to Intervention, a message is sent to the technician responsible for the building
     def twilio_txt
         notify = self.status_changed?
@@ -22,7 +22,6 @@ class Elevator < ApplicationRecord
     end
 
     # before_update :notify_slack, on: :update
-
     private
         def notify_slack
             notify = self.status_changed?
