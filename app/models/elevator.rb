@@ -1,7 +1,8 @@
 class Elevator < ApplicationRecord
     belongs_to :column
-    # before_save :twilio_txt
+    # has_many :interventions, dependent: :destroy
 
+    before_save :twilio_txt
     # When an elevator changes its status to Intervention, a message is sent to the technician responsible for the building
     def twilio_txt
         notify = self.status_changed?
@@ -13,17 +14,14 @@ class Elevator < ApplicationRecord
                 
                 message = @client.messages.create(
                     body: "Hello Mr/Mrs #{self.column.battery.building.full_name_of_the_technical_contact_for_the_building}. The Elevator ID: #{self.id}, with Serial Number: #{self.serial_number} requires maintenance, the elevators status has been changed to: #{self.status}",
-                    from: '+16106869129',
-                    to: ''
-                    # Mathieu Houde Phone Number
-                    # to: '+15819831152'                  
+                    from: '+12175744207',
+                    to: '+13062407737'                  
                 ) 
             end           
         end        
     end
 
     # before_update :notify_slack, on: :update
-
     private
         def notify_slack
             notify = self.status_changed?

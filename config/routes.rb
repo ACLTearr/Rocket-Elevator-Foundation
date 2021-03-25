@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :interventions
   devise_for :users
   
   resources :quotes
@@ -19,17 +20,24 @@ Rails.application.routes.draw do
   get "residential" => "pages#residential"
   get "commercial" => "pages#commercial"
   get "quotes" => "pages#quote"
+  get "interventions" => "pages#intervention"
 
   get "/index" => "pages#index"
 
   #get 'welcome' => 'watson#welcome'
 
   get '/watson/update' => 'watson#speak'
+
+  # /interventions is the action from the form in intervention.html.erb
+  post "/interventions" => "interventions#create"
   
   # /quotes is the action from the form in quote.html.erb
   post "/quotes" => "quotes#create"
 
   # /leads is the action from the form in index.html.erb
   post "/leads" => "leads#create"
+
+  # AJAX call route
+  get "/ajax/GetData" => "interventions#getData"
 
 end

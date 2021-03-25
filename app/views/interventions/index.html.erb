@@ -1,0 +1,62 @@
+<html>
+
+    <head>
+        <%= javascript_include_tag "intervention" %>
+    </head>
+    
+	
+    <body class="smoothscroll enable-animation">
+		<div id="wrapper">
+                <section class="page-header page-header-xlg parallax parallax-4" style = "background-image: url(<%= asset_path("Rocket_Elevator_Assets/Quote/AdobeStock_556688421.jpg") %>)">
+                    <div class="overlay dark-4"></div>
+                    <div class="container">
+                        <div class="bold font-raleway wow fadeInUp animated">
+                            <h2 class="fs-55 fw-400 text-center">Request an Intervention</h2>
+                        </div>
+                    </div>
+                </section>
+            
+                <div class="callout alert alert-border mt-1 mb-1">
+                    <div class="row">
+                        <div class="col-md-7 col-sm-8">
+                            <h3><strong>Questions?</strong></h3> &nbsp; 
+                            <p class="font-lato fs-35">We are here to help you!</p>
+                        </div>
+                        <div class="col-md-4 col-sm-4 text-right">
+                            <a class="btn btn-outline-danger" href="index.html#contact">CONTACT US <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                    <section class="section-xs">
+                        <div class="container">
+                            <div class="heading-title heading-dotted text-center">
+                                <h2 style="font-family: Garamond, Times, serif;">Intervention Form</h2>
+                            </div>					
+                        </div>
+                    </section>	
+
+                    <div class="card card-default">
+                        <div class="card-block">
+                            <form action="/interventions" method="post" id="interventions-form">
+                              <%= form_with model: @intervention, id: "intervention_form" do |f| %>
+                                <%= f.select :customer_id, Customer.all.collect {|customer| [customer.company_name + ", Customer ID: " + customer.id.to_s, customer.id]}, prompt: "Select a customer" %><br>
+                                <%= f.select :building_id, Building.all.collect { |building| [building.id] }, prompt: "Select a building" %><br>
+                                <%= f.select :battery_id, Battery.all.collect { |battery| [battery.id] }, prompt: "Select a battery" %><br>
+                                <%= f.select :column_id, Column.all.collect { |column| [column.id] }, prompt: "Select a column" %><br>
+                                <%= f.select :elevator_id, Elevator.all.collect { |elevator| [elevator.id] }, prompt: "Select an elevator" %><br>
+                                <%= f.select :employee_id, Employee.all.collect { |employee| [employee.id] }, prompt: "Select an employee" %>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <label for="interventionDescription">Description:</label>
+                                    <textarea maxlength="5000" rows="8" class="form-control" name="description" id="interventionDescription"></textarea>
+                                  </div>
+                                </div>
+                                <%= f.submit "Submit" %>
+                              <% end %>
+                            </form>
+                        </div>
+                    </div>  
+	 <a href="#" id="toTop"></a>
+    </body>
+</html>
