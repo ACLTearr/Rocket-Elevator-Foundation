@@ -58,21 +58,21 @@ class InterventionsController < ApplicationController
     if @intervention.save
       redirect_back fallback_location: root_path, notice: "Your Intervention was successfully created and sent!"
     end
-    
+
     client = ZendeskAPI::Client.new do |config|
       config.url = ENV['ZENDESK_URL']
       config.username = ENV['ZENDESK_USERNAME']
       config.token = ENV['ZENDESK_TOKEN']
     end
-  
+
     ZendeskAPI::Ticket.create!(client, 
       :subject => "#{Employee.find_by(user_id: current_user.id).first_name} #{Employee.find_by(user_id: current_user.id).last_name} submitted an intervention.", 
       :comment => { 
-          :value => "#{Employee.find_by(user_id: current_user.id).first_name} #{Employee.find_by(user_id: current_user.id).last_name} submitted an intervention for customer_name, on their building with the ID of /buiulding_id/.
-          The battery specified has the ID of /battery_id/, with a column ID of /column_id/, and an elevator ID of /elevator_id/.
-          /employee first name/ /employee last name/ ID: /employee_id/ was requested to handle this intervention.
+          :value => "#{Employee.find_by(user_id: current_user.id).first_name} #{Employee.find_by(user_id: current_user.id).last_name} submitted an intervention for #{Customer.find_by(id: params["customer_id"]).company_name}, on their building with the ID of #{params["building_id"]}.
+          The battery specified has the ID of #{params["battery_id"]}, with a column ID of #{params["column_id"]}, and an elevator ID of #{params["elevator_id"]}.
+          #{Employee.find_by(id: params["employee_id"]).first_name} #{Employee.find_by(id: params["employee_id"]).last_name} ID: #{Employee.find_by(id: params["employee_id"]).id} was requested to handle this intervention.
           There description of the intervention is as follows:
-          /description/"
+          #{params["description"]}"
       }, 
       :requester => { 
           "name": Employee.find_by(user_id: current_user.id).first_name + " " + Employee.find_by(user_id: current_user.id).last_name, 
@@ -81,11 +81,12 @@ class InterventionsController < ApplicationController
       :priority => "normal",
       :type => "question"
       )
-
   end
+
     # Only allow a list of trusted parameters through.
     def intervention_params
       params.fetch(:intervention, {})
       # params.required(:interventions).permit!
     end
+    
 end
