@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :interventions
   devise_for :users
   
   resources :quotes
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
 
   # Authenticates Blazer Using Devise
   authenticate :user, ->(user) { user.superadmin_role? or user.employee_role? } do
+    get "interventions" => "interventions#index"
     mount Blazer::Engine, at: "blazer"
   end
 
@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   get "residential" => "pages#residential"
   get "commercial" => "pages#commercial"
   get "quotes" => "pages#quote"
-  get "interventions" => "pages#intervention"
 
   get "/index" => "pages#index"
 

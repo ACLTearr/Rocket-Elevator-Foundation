@@ -10,7 +10,7 @@ $(document).ready(function () {
         if (value === "") {
             hideBuilding()
         } else {
-            $('#building_id').show()
+            $('#building').show()
             let buildings = [new Option("Select a building", "")]
             data = await getData(value, "building")
             data.forEach((element) => {buildings.push(new Option(`${element.full_name_of_the_technical_contact_for_the_building}, Building ID: ${element.id}`, element.id));})
@@ -23,7 +23,7 @@ $(document).ready(function () {
         if (value === "") {
             hideBattery()
         } else {
-            $('#battery_id').show()
+            $('#battery').show()
             let batteries = [new Option("Select a battery", "")]
             data = await getData(value, "battery")
             data.forEach((element) => {batteries.push(new Option(`Battery ID: ${element.id}`, element.id))})
@@ -36,7 +36,7 @@ $(document).ready(function () {
         if (value === "") {
             hideColumn()
         } else {
-            $('#column_id').show()
+            $('#column').show()
             let columns = [new Option("Select a column", "")]
             data = await getData(value, "column")
             data.forEach((element) => {columns.push(new Option(`Column ID: ${element.id}`, element.id))})
@@ -49,7 +49,7 @@ $(document).ready(function () {
         if (value === "") {
             hideElevator()
         } else {
-            $('#elevator_id').show()
+            $('#elevator').show()
             let elevators = [new Option("Select an elevator", "")]
             data = await getData(value, "elevator")
             data.forEach((element) => {elevators.push(new Option(`Elevator ID: ${element.id}`, element.id))})
@@ -58,22 +58,22 @@ $(document).ready(function () {
     })
 
     function hideBuilding() {
-        $('#building_id').hide()
+        $('#building').hide()
         hideBattery()
     }
 
     function hideBattery() {
-        $('#battery_id').hide()
+        $('#battery').hide()
         hideColumn()
     }
 
     function hideColumn() {
-        $('#column_id').hide()
+        $('#column').hide()
         hideElevator()
     }
 
     function hideElevator() {
-        $('#elevator_id').hide()
+        $('#elevator').hide()
     }
 
     async function getData(id, value) {
