@@ -40,19 +40,40 @@
                         <div class="card-block">
                             <form action="/interventions" method="post" id="interventions-form">
                               <%= form_with model: @intervention, id: "intervention_form" do |f| %>
-                                <%= f.select :customer_id, Customer.all.collect {|customer| [customer.company_name + ", Customer ID: " + customer.id.to_s, customer.id]}, prompt: "Select a customer" %><br>
-                                <%= f.select :building_id, Building.all.collect { |building| [building.id] }, prompt: "Select a building" %><br>
-                                <%= f.select :battery_id, Battery.all.collect { |battery| [battery.id] }, prompt: "Select a battery" %><br>
-                                <%= f.select :column_id, Column.all.collect { |column| [column.id] }, prompt: "Select a column" %><br>
-                                <%= f.select :elevator_id, Elevator.all.collect { |elevator| [elevator.id] }, prompt: "Select an elevator" %><br>
-                                <%= f.select :employee_id, Employee.all.collect { |employee| [employee.id] }, prompt: "Select an employee" %>
+
+                                <div id="customer">
+                                    <%= f.select :customer_id, Customer.all.collect {|customer| [customer.company_name + ", Customer ID: " + customer.id.to_s, customer.id]}, { prompt: "Select a customer" }, required: true %><br>
+                                </div>
+
+                                <div id="building">
+                                    <%= f.select :building_id, Building.all.collect { |building| [building.id] }, { prompt: "Select a building" }, required: true %><br>
+                                </div>
+
+                                <div id="battery">
+                                    <%= f.select :battery_id, Battery.all.collect { |battery| [battery.id] }, { prompt: "Select a battery" }, required: true %><br>
+                                </div>
+
+                                <div id="column">
+                                    <%= f.select :column_id, Column.all.collect { |column| [column.id] }, prompt: "Select a column" %><br>
+                                </div>
+
+                                <div id="elevator">
+                                    <%= f.select :elevator_id, Elevator.all.collect { |elevator| [elevator.id] }, prompt: "Select an elevator" %><br>
+                                </div>
+
+                                <div id="employee">
+                                    <%= f.select :employee_id, Employee.all.collect { |employee| [employee.id] }, prompt: "Select an employee" %>
+                                </div>
+
                                 <div class="row">
                                   <div class="col-md-12">
                                     <label for="interventionDescription">Description:</label>
                                     <textarea maxlength="5000" rows="8" class="form-control" name="description" id="interventionDescription"></textarea>
                                   </div>
                                 </div>
+
                                 <%= f.submit "Submit" %>
+                                
                               <% end %>
                             </form>
                         </div>

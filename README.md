@@ -2,10 +2,7 @@ Rocket_Elevators_Information_System
 🚀	Working with MVC (Model-View-Controller)	📈
 
 Members of this week's team
-Kaelen Burroughs -
-Ahsan Syed -
-Cristiane Santiago -
-Olaolu Adetula -
+Kaelen Burroughs
  
 🎯 About
 Week 4 - The main goal of this week is to transform the static site previously developed during the Genesis program and turn it into a web application on MVC (Model - View - Controller) foundations. The site must be in a state that allows you to create a new section that saves the Javascript form that calculates an estimate in the form of a purchase order.
@@ -137,3 +134,10 @@ API Info
 7. ZenDesk
 
     ZenDesk takes the info from a submitted lead or quote and submits it to a ticket in the ZenDesk workspace for RocketElevators to see and deal with. The tickets can be seen at https://rocketelevators8608.zendesk.com/agent/filters/360208008033, and logged into using the email "olaadetula@gmail.com" and password "123456".
+
+
+WEEK 9 - Consolidation
+
+For week 9's consolidation, we were asked to create a new form for an employee to submit an intervention, which involved creating a new page with the appropriate form, as well as a table in the MySQL database with many different associations. When an intervention was submitted, a ZenDesk ticket was to be created as well. Those tickets can be seen at https://codeboxx-kaelen.zendesk.com/agent/dashboard using the login info of burroughsdevtest@gmail.com and Codeboxx1!.
+
+Outside of the rails app, we were also to expand the REST API created last week with new queries surrounding the interventions. Those queries can be found at the PostMan team workspace here https://app.getpostman.com/join-team?invite_code=f09613b7a24e69fef5524a5d3f5f434e&ws=42edd766-bbd4-4fab-985f-6b3d71ef8b9d in the Consolidation folder. The repo for this API can be found at https://github.com/ACLTearr/Rest-API-Rocket-Elevators.
