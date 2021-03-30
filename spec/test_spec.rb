@@ -1,6 +1,6 @@
 require 'test'
 
-RSpec.describe Test, "#score" do
+describe Test do
     context "with no strikes or spares"
         it "sums the pin count for each roll" do
             test = Test.new
