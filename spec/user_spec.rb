@@ -2,18 +2,18 @@ require 'rails_helper'
 
 describe User do
 
-    email = "test@test.com"
-    password = "123456"
-    newPassword = "654321"
-
-    user = User.create(email: email, password: password)
+    let!(:email){Faker::Internet.email}
+    let!(:password){Faker::Internet.password}
 
     context 'Create User' do
         it 'should create a new user' do
 
+            user = User.create(email: email, password: password)
+            puts user.email
+
             # Testing that email gets set and is valid
             expect(user.email).to eq(email)
-            expect(user.email).to match(/\A\w+@\w+\.\w{2,3}\Z/)
+            expect(user.email).to match(/\A[^@\s]+@[^@\s]+\z/)
 
             # Testing that password gets set and is within length requirements
             expect(user.password).to eq(password)
@@ -23,12 +23,17 @@ describe User do
     end
 
     context 'Update User' do
-        it 'should change users password' do
+        it 'should change users email and password' do
 
-            user.update(password: newPassword)
+            user = User.create(email: email, password: password)
+
+            user.update(email: 'new@new.ca', password: 'newPassword')
 
             # Testing that password updates
-            expect(user.password).to eq(newPassword)
+            expect(user.password).to eq('newPassword')
+
+            # Testing that email updates
+            expect(user.email).to eq('new@new.ca')
 
         end
     end
