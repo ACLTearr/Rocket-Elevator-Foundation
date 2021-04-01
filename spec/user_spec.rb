@@ -9,9 +9,8 @@ describe User do
         it 'should create a new user' do
 
             user = User.create(email: email, password: password)
-            puts user.email
 
-            # Testing that email gets set and is valid
+            # Testing that email gets set and is valid format
             expect(user.email).to eq(email)
             expect(user.email).to match(/\A[^@\s]+@[^@\s]+\z/)
 
@@ -29,10 +28,8 @@ describe User do
 
             user.update(email: 'new@new.ca', password: 'newPassword')
 
-            # Testing that password updates
+            # Testing that email and password update
             expect(user.password).to eq('newPassword')
-
-            # Testing that email updates
             expect(user.email).to eq('new@new.ca')
 
         end

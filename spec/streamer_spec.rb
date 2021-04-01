@@ -13,24 +13,22 @@ describe ElevatorMedia::Streamer do
     end
 
     context 'Check that getContent' do
+        # Testing that Streamer responds to getContent
         it 'is available' do
             expect(ElevatorMedia::Streamer).to respond_to(:getContent)
         end
-    end
-
-    context 'Check that getContent' do
+        
+        # Testing that getContent returns a string
         it 'returns a string' do
             expect(ElevatorMedia::Streamer.getContent()).to be_a(String)
         end
-    end
-
-    context 'Check that getContent' do
+        
+        # Testing that getContent returns with a div
         it 'returns inside of a div tag' do
             expect(ElevatorMedia::Streamer.getContent()).to include('div')
         end
-    end
-
-    context 'Check that getContent' do
+        
+        # Testing that getContent returns expected weather in correct format based on variable provided above
         it 'returns weather for Montreal in a div' do
             expect(ElevatorMedia::Streamer.getContent()).to eq(weather)
         end
