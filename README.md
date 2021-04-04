@@ -141,3 +141,7 @@ WEEK 9 - Consolidation
 For week 9's consolidation, we were asked to create a new form for an employee to submit an intervention, which involved creating a new page with the appropriate form, as well as a table in the MySQL database with many different associations. When an intervention was submitted, a ZenDesk ticket was to be created as well. Those tickets can be seen at https://codeboxx-kaelen.zendesk.com/agent/dashboard using the login info of burroughsdevtest@gmail.com and Codeboxx1!.
 
 Outside of the rails app, we were also to expand the REST API created last week with new queries surrounding the interventions. Those queries can be found at the PostMan team workspace here https://app.getpostman.com/join-team?invite_code=f09613b7a24e69fef5524a5d3f5f434e&ws=42edd766-bbd4-4fab-985f-6b3d71ef8b9d in the Consolidation folder. The repo for this API can be found at https://github.com/ACLTearr/Rest-API-Rocket-Elevators.
+
+Week 10 - TDD
+
+This week we were asked to learn about Test Driven Development. In doing so, we needed to create tests for a new Rocket Elevators media streaming feature in elevators. Along with those tests, we had to add tests to 3 different pieces of already existing code. All the tests that I made this week can be found in the spec folder. The methods for the streamer_spec are in the lib folder, as well as two lines added to the employee model in the app/models directory. The tests that I created are the the streamer profile, as well as the existing user and employee models, and for the interventions controller.
