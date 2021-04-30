@@ -5,6 +5,8 @@ ruby '2.6.6'
 
 gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
 
+gem 'newrelic_rpm'
+
 #RSpec for testing
 gem 'rspec-rails'
 
